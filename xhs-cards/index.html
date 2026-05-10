@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Maomao Codex Pet 小红书卡片</title>
+    <style>
+      :root {
+        --ink: #18141f;
+        --muted: #6b6378;
+        --paper: #fffaf4;
+        --rose: #ff4f78;
+        --blue: #2864ff;
+        --mint: #00c982;
+        --gold: #f5b942;
+        --line: rgba(24, 20, 31, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #1d1b24;
+        color: var(--ink);
+        font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      }
+
+      .deck {
+        display: grid;
+        gap: 32px;
+        justify-content: center;
+        padding: 40px 20px;
+      }
+
+      .card {
+        position: relative;
+        width: min(1080px, calc(100vw - 40px));
+        aspect-ratio: 3 / 4;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 12% 16%, rgba(255, 79, 120, 0.20), transparent 28%),
+          radial-gradient(circle at 90% 14%, rgba(40, 100, 255, 0.18), transparent 30%),
+          linear-gradient(145deg, #fffdf8 0%, #f7fbff 54%, #fff5f8 100%);
+        border-radius: 42px;
+        box-shadow: 0 28px 90px rgba(0, 0, 0, 0.32);
+        padding: clamp(34px, 5vw, 76px);
+      }
+
+      .card::after {
+        content: "";
+        position: absolute;
+        inset: 28px;
+        border: 2px solid var(--line);
+        border-radius: 30px;
+        pointer-events: none;
+      }
+
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 44px;
+        padding: 0 18px;
+        border: 2px solid var(--ink);
+        border-radius: 999px;
+        background: #fff;
+        font-size: clamp(22px, 2.8vw, 34px);
+        font-weight: 800;
+      }
+
+      h1,
+      h2 {
+        margin: 28px 0 0;
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        max-width: 850px;
+        font-size: clamp(64px, 9vw, 122px);
+      }
+
+      h2 {
+        max-width: 820px;
+        font-size: clamp(48px, 7.2vw, 88px);
+      }
+
+      p {
+        max-width: 820px;
+        margin: 24px 0 0;
+        color: var(--muted);
+        font-size: clamp(26px, 3.3vw, 40px);
+        line-height: 1.45;
+        font-weight: 650;
+      }
+
+      .accent {
+        color: var(--rose);
+      }
+
+      .blue {
+        color: var(--blue);
+      }
+
+      .mint {
+        color: var(--mint);
+      }
+
+      .hero-pet {
+        position: absolute;
+        right: clamp(34px, 7vw, 92px);
+        bottom: clamp(34px, 7vw, 92px);
+        width: min(48%, 470px);
+        filter: drop-shadow(0 20px 32px rgba(24, 20, 31, 0.22));
+      }
+
+      .sheet {
+        width: 100%;
+        margin-top: 34px;
+        border: 2px solid var(--line);
+        border-radius: 24px;
+        background: #fff;
+        box-shadow: 0 18px 40px rgba(24, 20, 31, 0.12);
+      }
+
+      .steps {
+        display: grid;
+        gap: 16px;
+        margin-top: 34px;
+      }
+
+      .step {
+        display: grid;
+        grid-template-columns: 76px 1fr;
+        align-items: center;
+        min-height: 86px;
+        padding: 16px 20px;
+        border: 2px solid var(--line);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.78);
+        font-size: clamp(25px, 3vw, 36px);
+        font-weight: 800;
+      }
+
+      .num {
+        display: grid;
+        place-items: center;
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        background: var(--ink);
+        color: #fff;
+      }
+
+      .quote {
+        margin-top: 48px;
+        padding: 32px;
+        border-left: 14px solid var(--rose);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.74);
+        font-size: clamp(32px, 4vw, 50px);
+        line-height: 1.32;
+        font-weight: 900;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 34px;
+      }
+
+      .chip {
+        padding: 12px 18px;
+        border: 2px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        font-size: clamp(22px, 2.6vw, 32px);
+        font-weight: 800;
+      }
+
+      .code {
+        margin-top: 34px;
+        padding: 28px;
+        border-radius: 24px;
+        background: #18141f;
+        color: #fff;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: clamp(23px, 2.7vw, 34px);
+        line-height: 1.55;
+      }
+
+      .footer {
+        position: absolute;
+        left: clamp(34px, 5vw, 76px);
+        right: clamp(34px, 5vw, 76px);
+        bottom: clamp(34px, 5vw, 76px);
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        color: var(--muted);
+        font-size: clamp(22px, 2.6vw, 32px);
+        font-weight: 800;
+      }
+
+      .wide-art {
+        position: absolute;
+        left: 70px;
+        right: 70px;
+        bottom: 112px;
+      }
+
+      .card.dark {
+        background:
+          radial-gradient(circle at 18% 20%, rgba(0, 201, 130, 0.22), transparent 28%),
+          radial-gradient(circle at 88% 22%, rgba(255, 79, 120, 0.22), transparent 30%),
+          linear-gradient(145deg, #16131f 0%, #232340 100%);
+        color: #fff;
+      }
+
+      .card.dark p,
+      .card.dark .footer {
+        color: rgba(255, 255, 255, 0.74);
+      }
+
+      .card.dark .kicker,
+      .card.dark .chip {
+        color: var(--ink);
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+
+        .deck {
+          display: block;
+          padding: 0;
+        }
+
+        .card {
+          width: 1080px;
+          page-break-after: always;
+          border-radius: 0;
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="deck">
+      <section class="card">
+        <div class="kicker">Codex Pet 实验</div>
+        <h1>把猫猫视频做成会动的 <span class="accent">Codex 宠物</span></h1>
+        <p>一段 33 秒的视频，最后变成一个可安装的桌面动画资源包。</p>
+        <img class="hero-pet" src="assets/maomao-frame.png" alt="Maomao transparent pet sprite" />
+        <div class="footer"><span>Maomao</span><span>video → spritesheet → pet</span></div>
+      </section>
+
+      <section class="card dark">
+        <div class="kicker">最重要的特征</div>
+        <h2>不是“生成一只猫”，而是保住它的<span class="accent">灵魂</span></h2>
+        <p>这只猫猫头顶和耳边有很多乱乱的呆毛，所以我把“很多呆毛”写成 identity invariant，要求每个动作都保留。</p>
+        <div class="quote">AI 可以美化，但不能把猫猫最可爱的地方磨平。</div>
+        <div class="footer"><span>身份特征</span><span>messy head tufts</span></div>
+      </section>
+
+      <section class="card">
+        <div class="kicker">生产流水线</div>
+        <h2>真正做的是一套资产生成流程</h2>
+        <div class="steps">
+          <div class="step"><span class="num">1</span><span>视频抽帧，做 reference contact sheet</span></div>
+          <div class="step"><span class="num">2</span><span>用 imagegen 生成 canonical base</span></div>
+          <div class="step"><span class="num">3</span><span>生成 9 行动画，每行 8 帧</span></div>
+          <div class="step"><span class="num">4</span><span>抠绿幕、切帧、拼 atlas、验证并安装</span></div>
+        </div>
+        <div class="footer"><span>self-contained skill</span><span>only depends on imagegen</span></div>
+      </section>
+
+      <section class="card">
+        <div class="kicker">踩坑 01</div>
+        <h2>AI 生成的 8 帧，不一定真的<span class="blue">等宽对齐</span></h2>
+        <p>直接按宽度切 8 份，会把尾巴或身体切碎。后来改成先用 alpha 通道找主体，再按 8 个姿势簇裁切。</p>
+        <div class="code">subject groups → 8 pose crops<br />fallback → equal-width slicing</div>
+        <div class="footer"><span>切帧问题</span><span>tail fragments fixed</span></div>
+      </section>
+
+      <section class="card">
+        <div class="kicker">踩坑 02</div>
+        <h2>透明背景也会<span class="mint">漏色</span></h2>
+        <p>绿幕像素 alpha 变成 0 后，如果 RGB 还保留绿色，缩放时会参与抗锯齿，边缘就会出现绿边。</p>
+        <div class="quote">透明像素也要清 RGB，不然它会在缩放时回来。</div>
+        <div class="footer"><span>chroma key cleanup</span><span>green fringe: 0</span></div>
+      </section>
+
+      <section class="card">
+        <div class="kicker">最终资源</div>
+        <h2>Codex App 能安装的宠物包</h2>
+        <div class="code">~/.codex/pets/maomao/<br />├── pet.json<br />└── spritesheet.webp</div>
+        <div class="chips">
+          <span class="chip">1536 x 1872</span>
+          <span class="chip">9 个状态</span>
+          <span class="chip">72 帧</span>
+          <span class="chip">RGBA WebP</span>
+        </div>
+        <div class="footer"><span>Maomao</span><span>installable Codex pet</span></div>
+      </section>
+
+      <section class="card">
+        <div class="kicker">QA 预览</div>
+        <h2>尺寸正确不代表真的可用</h2>
+        <p>必须打开 contact sheet，看每一行是否有身份漂移、断尾、绿边、穿格和奇怪道具。</p>
+        <img class="sheet" src="assets/maomao-contact-sheet.png" alt="Maomao QA contact sheet" />
+      </section>
+
+      <section class="card dark">
+        <div class="kicker">一句话总结</div>
+        <h2>AI 负责生成，工程负责把它变稳定</h2>
+        <p>这次最有意思的不是某一张猫图，而是把不稳定的生成结果收敛成一个可复用、可验证、可安装的 Codex skill。</p>
+        <div class="chips">
+          <span class="chip">#Codex</span>
+          <span class="chip">#AI工具</span>
+          <span class="chip">#桌面宠物</span>
+          <span class="chip">#猫猫</span>
+          <span class="chip">#独立开发</span>
+        </div>
+        <div class="footer"><span>video-hatch-pet</span><span>from video to pet</span></div>
+      </section>
+    </main>
+  </body>
+</html>

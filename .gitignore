@@ -1,0 +1,11 @@
+.DS_Store
+.superpowers/
+docs/superpowers/
+__pycache__/
+*.pyc
+
+# Local Codex/video-pet run outputs can contain private source frames.
+pet-runs/
+*.mp4
+*.mov
+*.webm

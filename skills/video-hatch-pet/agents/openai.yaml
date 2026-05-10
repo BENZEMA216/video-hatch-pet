@@ -1,0 +1,4 @@
+interface:
+  display_name: "Video Hatch Pet"
+  short_description: "Build Codex pets from videos"
+  default_prompt: "Use $video-hatch-pet to create a Codex animated pet from this video."
