@@ -359,20 +359,45 @@
         font-weight: 900;
       }
 
-      .qa-card h2 {
-        max-width: 830px;
-        font-size: clamp(54px, 7.4vw, 94px);
+      .flow-card h2 {
+        max-width: 860px;
       }
 
-      .qa-card p {
-        max-width: 760px;
+      .flow-card p {
+        max-width: 700px;
         color: var(--ink);
-        font-weight: 850;
+        font-weight: 900;
       }
 
-      .qa-card .sheet {
-        width: min(82%, 860px);
-        margin-top: 28px;
+      .flow-number {
+        display: grid;
+        place-items: center;
+        width: clamp(104px, 12vw, 150px);
+        height: clamp(104px, 12vw, 150px);
+        margin-top: 42px;
+        border: 5px solid var(--ink);
+        border-radius: 50%;
+        background: var(--rose);
+        color: #fff;
+        font-size: clamp(54px, 7vw, 84px);
+        font-weight: 950;
+        box-shadow: 12px 12px 0 var(--ink);
+      }
+
+      .done-card {
+        background:
+          radial-gradient(circle at 78% 20%, rgba(0, 201, 130, 0.22), transparent 30%),
+          linear-gradient(145deg, #fffdf8 0%, #eef7ff 54%, #fff2f5 100%);
+      }
+
+      .done-card .hero-pet {
+        width: min(58%, 560px);
+        right: clamp(26px, 4vw, 62px);
+        bottom: clamp(82px, 9vw, 124px);
+      }
+
+      .simple-card .chips {
+        max-width: 760px;
       }
 
       .book-card {
@@ -450,84 +475,63 @@
       <section id="cover-card" class="card cover">
         <div class="kicker">当当已上线</div>
         <h1>我把当当做成了<span class="accent">Codex Pet</span></h1>
-        <p class="cover-lead">33 秒视频 → 72 帧动画 → 可安装桌面宠物</p>
+        <p class="cover-lead">上传一段视频，就能生成会动的桌面宠物</p>
         <div class="cover-badges">
-          <span class="cover-badge hot">会眨眼</span>
-          <span class="cover-badge">会挥爪</span>
-          <span class="cover-badge">会跑来跑去</span>
+          <span class="cover-badge hot">上传视频</span>
+          <span class="cover-badge">自动生成</span>
+          <span class="cover-badge">直接安装</span>
         </div>
         <div class="cover-stamp">会动的当当</div>
         <img class="hero-pet cover-cat" src="assets/dangdang-frame.png" alt="当当 transparent pet sprite" />
-        <div class="footer"><span>video-hatch-pet</span><span>video → spritesheet → pet</span></div>
+        <div class="footer"><span>video-hatch-pet</span><span>上传视频 → Codex Pet</span></div>
       </section>
 
-      <section id="qa-card" class="card qa-card">
-        <div class="kicker">先看结果</div>
-        <h2>9 组动作，72 帧当当</h2>
-        <p>这张 QA 图用来检查断尾、绿边和身份漂移。</p>
-        <img class="sheet" src="assets/dangdang-contact-sheet.png" alt="当当 QA contact sheet" />
-        <div class="footer"><span>QA contact sheet</span><span>9 states × 8 frames</span></div>
+      <section id="upload-card" class="card flow-card">
+        <div class="kicker">用户流程 01</div>
+        <h2>只需要上传一段视频</h2>
+        <p>可以是宠物、角色、玩偶，能看清主体就行。</p>
+        <div class="flow-number">1</div>
+        <img class="hero-pet" src="assets/dangdang-frame.png" alt="当当 Codex Pet" />
+        <div class="footer"><span>上传视频</span><span>只要这一步</span></div>
       </section>
 
-      <section id="tuft-card" class="card dark tuft-card">
-        <div class="kicker">当当的灵魂：呆毛</div>
-        <h2>不是模板宠物，是<span class="accent">乱毛当当</span></h2>
-        <p class="tuft-note">头顶和耳边炸开的毛，每一帧都要保住。</p>
-        <div class="identity-tags">
-          <span class="identity-tag">写进 prompt 约束</span>
-          <span class="identity-tag">9 个动作都要保留</span>
-          <span class="identity-tag">不能被 AI 磨平</span>
+      <section id="done-card" class="card done-card flow-card">
+        <div class="kicker">用户流程 02</div>
+        <h2>等流程跑完，就结束</h2>
+        <p>生成好的当当会变成 Codex 里能安装的桌面宠物。</p>
+        <div class="flow-number">2</div>
+        <img class="hero-pet" src="assets/dangdang-frame.png" alt="当当 finished pet" />
+        <div class="footer"><span>流程结束</span><span>Codex Pet 可安装</span></div>
+      </section>
+
+      <section class="card simple-card">
+        <div class="kicker">这个项目是什么</div>
+        <h2>把视频变成 Codex 桌面宠物</h2>
+        <p>它不是教程帖，只是一个把喜欢的对象做成可安装小宠物的工具。</p>
+        <div class="chips">
+          <span class="chip">宠物视频</span>
+          <span class="chip">角色视频</span>
+          <span class="chip">自动生成</span>
+          <span class="chip">Codex 里使用</span>
         </div>
-        <span class="callout one">头顶呆毛</span>
-        <span class="callout two">耳边炸毛</span>
-        <img class="hero-pet" src="assets/dangdang-frame.png" alt="当当 with visible tufts" />
-        <div class="footer"><span>identity invariant</span><span>messy head tufts</span></div>
-      </section>
-
-      <section class="card">
-        <div class="kicker">生产流水线</div>
-        <h2>流程就四步</h2>
-        <div class="steps">
-          <div class="step"><span class="num">1</span><span>视频抽帧</span></div>
-          <div class="step"><span class="num">2</span><span>imagegen 定形象</span></div>
-          <div class="step"><span class="num">3</span><span>生成 9 组动画</span></div>
-          <div class="step"><span class="num">4</span><span>清理、拼图、安装</span></div>
-        </div>
-        <div class="footer"><span>self-contained skill</span><span>only depends on imagegen</span></div>
-      </section>
-
-      <section class="card">
-        <div class="kicker">踩坑 01</div>
-        <h2>切帧不能<span class="blue">盲切</span></h2>
-        <p>AI 生成的 8 帧不一定等宽。先找主体，再裁姿势，才能避开断尾和碎片。</p>
-        <div class="code">alpha groups → pose crops<br />fallback → equal slicing</div>
-        <div class="footer"><span>切帧问题</span><span>tail fragments fixed</span></div>
-      </section>
-
-      <section class="card">
-        <div class="kicker">踩坑 02</div>
-        <h2>透明像素也要<span class="mint">清 RGB</span></h2>
-        <p>只改 alpha 不够。透明像素里的绿色，缩放时还会变成边缘绿边。</p>
-        <div class="quote">透明了，不代表干净了。</div>
-        <div class="footer"><span>chroma key cleanup</span><span>green fringe: 0</span></div>
+        <div class="footer"><span>项目一句话</span><span>上传 → 完成</span></div>
       </section>
 
       <section class="card book-card">
         <div class="kicker">复现入口</div>
-        <h2>Skill 和卡片都在这里</h2>
+        <h2>项目地址放这里</h2>
         <div class="repo-book">
           <span class="repo-label">GitHub repository</span>
           <span class="repo-name">BENZEMA216/video-hatch-pet</span>
           <span class="repo-url">github.com/BENZEMA216/video-hatch-pet</span>
         </div>
         <div class="chips">
-          <span class="chip">pet.json + spritesheet.webp</span>
-          <span class="chip">1536 x 1872</span>
-          <span class="chip">9 个状态</span>
-          <span class="chip">72 帧</span>
-          <span class="chip">RGBA WebP</span>
+          <span class="chip">项目源码</span>
+          <span class="chip">上传视频</span>
+          <span class="chip">生成宠物</span>
+          <span class="chip">安装使用</span>
         </div>
-        <div class="footer"><span>当当</span><span>installable Codex pet</span></div>
+        <div class="footer"><span>当当</span><span>GitHub 项目地址</span></div>
       </section>
     </main>
     <script>
