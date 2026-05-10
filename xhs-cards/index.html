@@ -400,6 +400,51 @@
         max-width: 760px;
       }
 
+      .result-card {
+        background:
+          radial-gradient(circle at 84% 16%, rgba(255, 79, 120, 0.18), transparent 30%),
+          linear-gradient(145deg, #fffdf8 0%, #eef7ff 52%, #fff5f8 100%);
+      }
+
+      .result-card h2 {
+        max-width: 880px;
+        font-size: clamp(54px, 7.6vw, 96px);
+      }
+
+      .result-card p {
+        max-width: 760px;
+        color: var(--ink);
+        font-weight: 850;
+      }
+
+      .result-sheet {
+        width: min(82%, 860px);
+        max-height: 820px;
+        object-fit: contain;
+        margin-top: 28px;
+        border: 3px solid var(--ink);
+        border-radius: 24px;
+        background: #fff;
+        box-shadow: 12px 12px 0 var(--gold);
+      }
+
+      .how-card .steps {
+        max-width: 760px;
+        margin-top: 42px;
+      }
+
+      .how-card .step {
+        grid-template-columns: 82px 1fr;
+        background: rgba(255, 255, 255, 0.9);
+        border-color: rgba(24, 20, 31, 0.22);
+      }
+
+      .how-card .hero-pet {
+        width: min(42%, 400px);
+        right: clamp(42px, 6vw, 82px);
+        bottom: clamp(92px, 10vw, 132px);
+      }
+
       .book-card {
         background:
           linear-gradient(135deg, rgba(245, 185, 66, 0.18) 0 24%, transparent 24% 100%),
@@ -473,8 +518,8 @@
   <body>
     <main class="deck">
       <section id="cover-card" class="card cover">
-        <div class="kicker">当当已上线</div>
-        <h1>我把当当做成了<span class="accent">Codex Pet</span></h1>
+        <div class="kicker">刚刚的项目</div>
+        <h1>我做了一个<span class="accent">Codex Pet 生成器</span></h1>
         <p class="cover-lead">上传一段视频，就能生成会动的桌面宠物</p>
         <div class="cover-badges">
           <span class="cover-badge hot">上传视频</span>
@@ -486,40 +531,29 @@
         <div class="footer"><span>video-hatch-pet</span><span>上传视频 → Codex Pet</span></div>
       </section>
 
-      <section id="upload-card" class="card flow-card">
-        <div class="kicker">用户流程 01</div>
-        <h2>只需要上传一段视频</h2>
-        <p>可以是宠物、角色、玩偶，能看清主体就行。</p>
-        <div class="flow-number">1</div>
-        <img class="hero-pet" src="assets/dangdang-frame.png" alt="当当 Codex Pet" />
-        <div class="footer"><span>上传视频</span><span>只要这一步</span></div>
+      <section id="result-card" class="card result-card">
+        <div class="kicker">生成结果</div>
+        <h2>当当真的动起来了</h2>
+        <p>这是生成后的动作预览：很多个小状态已经排好了。</p>
+        <img class="result-sheet" src="assets/dangdang-contact-sheet.png" alt="当当 multi-frame result preview" />
+        <div class="footer"><span>结果页</span><span>多动作预览</span></div>
       </section>
 
-      <section id="done-card" class="card done-card flow-card">
-        <div class="kicker">用户流程 02</div>
-        <h2>等流程跑完，就结束</h2>
-        <p>生成好的当当会变成 Codex 里能安装的桌面宠物。</p>
-        <div class="flow-number">2</div>
-        <img class="hero-pet" src="assets/dangdang-frame.png" alt="当当 finished pet" />
-        <div class="footer"><span>流程结束</span><span>Codex Pet 可安装</span></div>
-      </section>
-
-      <section class="card simple-card">
-        <div class="kicker">这个项目是什么</div>
-        <h2>把视频变成 Codex 桌面宠物</h2>
-        <p>它不是教程帖，只是一个把喜欢的对象做成可安装小宠物的工具。</p>
-        <div class="chips">
-          <span class="chip">宠物视频</span>
-          <span class="chip">角色视频</span>
-          <span class="chip">自动生成</span>
-          <span class="chip">Codex 里使用</span>
+      <section id="how-card" class="card how-card">
+        <div class="kicker">用户怎么用</div>
+        <h2>流程就这么简单</h2>
+        <div class="steps">
+          <div class="step"><span class="num">1</span><span>上传一段视频</span></div>
+          <div class="step"><span class="num">2</span><span>等生成流程结束</span></div>
+          <div class="step"><span class="num">3</span><span>在 Codex 里安装使用</span></div>
         </div>
-        <div class="footer"><span>项目一句话</span><span>上传 → 完成</span></div>
+        <img class="hero-pet" src="assets/dangdang-frame.png" alt="当当 Codex Pet" />
+        <div class="footer"><span>用户流程</span><span>上传 → 生成 → 使用</span></div>
       </section>
 
       <section class="card book-card">
-        <div class="kicker">复现入口</div>
-        <h2>项目地址放这里</h2>
+        <div class="kicker">GitHub 地址</div>
+        <h2>项目和 Skill 都在这里</h2>
         <div class="repo-book">
           <span class="repo-label">GitHub repository</span>
           <span class="repo-name">BENZEMA216/video-hatch-pet</span>
@@ -527,9 +561,9 @@
         </div>
         <div class="chips">
           <span class="chip">项目源码</span>
-          <span class="chip">上传视频</span>
-          <span class="chip">生成宠物</span>
-          <span class="chip">安装使用</span>
+          <span class="chip">Codex Skill</span>
+          <span class="chip">小红书卡片</span>
+          <span class="chip">当当示例</span>
         </div>
         <div class="footer"><span>当当</span><span>GitHub 项目地址</span></div>
       </section>
