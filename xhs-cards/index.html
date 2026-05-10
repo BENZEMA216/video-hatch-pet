@@ -230,6 +230,135 @@
         color: var(--ink);
       }
 
+      .cover {
+        background:
+          linear-gradient(135deg, rgba(24, 20, 31, 0.07) 0 18%, transparent 18% 100%),
+          linear-gradient(145deg, #fff9ef 0%, #eef7ff 52%, #fff0f4 100%);
+      }
+
+      .cover h1 {
+        max-width: 900px;
+        font-size: clamp(68px, 8.8vw, 112px);
+      }
+
+      .cover h1 .accent {
+        display: block;
+      }
+
+      .cover-lead {
+        max-width: 650px;
+        color: var(--ink);
+        font-size: clamp(32px, 3.8vw, 48px);
+        font-weight: 900;
+      }
+
+      .hero-pet.cover-cat {
+        width: min(56%, 560px);
+        right: clamp(22px, 4vw, 60px);
+        bottom: clamp(62px, 8vw, 104px);
+        filter: drop-shadow(0 28px 38px rgba(24, 20, 31, 0.25));
+      }
+
+      .cover-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 30px;
+        max-width: 610px;
+      }
+
+      .cover-badge {
+        padding: 12px 18px;
+        border: 3px solid var(--ink);
+        border-radius: 999px;
+        background: #fff;
+        font-size: clamp(24px, 2.8vw, 34px);
+        font-weight: 950;
+      }
+
+      .cover-badge.hot {
+        background: var(--rose);
+        color: #fff;
+      }
+
+      .cover-stamp {
+        position: absolute;
+        left: clamp(40px, 5vw, 78px);
+        bottom: clamp(126px, 13vw, 180px);
+        transform: rotate(-5deg);
+        padding: 16px 24px;
+        border: 4px solid var(--ink);
+        border-radius: 22px;
+        background: var(--gold);
+        color: var(--ink);
+        font-size: clamp(28px, 3.4vw, 44px);
+        font-weight: 950;
+        box-shadow: 10px 10px 0 var(--ink);
+      }
+
+      .tuft-card {
+        background:
+          linear-gradient(90deg, rgba(255, 79, 120, 0.12) 0 16px, transparent 16px 48px),
+          linear-gradient(145deg, #17131f 0%, #20233c 58%, #312139 100%);
+      }
+
+      .tuft-card h2 {
+        max-width: 760px;
+        font-size: clamp(58px, 8vw, 106px);
+      }
+
+      .tuft-card .hero-pet {
+        width: min(52%, 520px);
+        right: clamp(30px, 5vw, 72px);
+        bottom: clamp(120px, 13vw, 190px);
+      }
+
+      .tuft-note {
+        max-width: 500px;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: clamp(28px, 3.5vw, 42px);
+        font-weight: 850;
+      }
+
+      .callout {
+        position: absolute;
+        padding: 12px 18px;
+        border: 2px solid rgba(255, 255, 255, 0.7);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--ink);
+        font-size: clamp(22px, 2.6vw, 32px);
+        font-weight: 950;
+        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.22);
+      }
+
+      .callout.one {
+        right: 52px;
+        top: 390px;
+      }
+
+      .callout.two {
+        right: 310px;
+        bottom: 146px;
+      }
+
+      .identity-tags {
+        display: grid;
+        gap: 14px;
+        max-width: 520px;
+        margin-top: 34px;
+      }
+
+      .identity-tag {
+        width: fit-content;
+        padding: 12px 18px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font-size: clamp(24px, 3vw, 36px);
+        font-weight: 900;
+      }
+
       @media print {
         body {
           background: #fff;
@@ -251,20 +380,33 @@
   </head>
   <body>
     <main class="deck">
-      <section class="card">
-        <div class="kicker">Codex Pet 实验</div>
-        <h1>把猫猫视频做成会动的 <span class="accent">Codex 宠物</span></h1>
-        <p>一段 33 秒的视频，最后变成一个可安装的桌面动画资源包。</p>
-        <img class="hero-pet" src="assets/maomao-frame.png" alt="Maomao transparent pet sprite" />
-        <div class="footer"><span>Maomao</span><span>video → spritesheet → pet</span></div>
+      <section id="cover-card" class="card cover">
+        <div class="kicker">我真的把猫装进 Codex 了</div>
+        <h1>我把猫做成了<span class="accent">Codex Pet</span></h1>
+        <p class="cover-lead">33 秒视频 → 72 帧会动小猫 → 可安装桌面宠物</p>
+        <div class="cover-badges">
+          <span class="cover-badge hot">会眨眼</span>
+          <span class="cover-badge">会挥爪</span>
+          <span class="cover-badge">会跑来跑去</span>
+        </div>
+        <div class="cover-stamp">Maomao 已上线</div>
+        <img class="hero-pet cover-cat" src="assets/maomao-frame.png" alt="Maomao transparent pet sprite" />
+        <div class="footer"><span>video-hatch-pet</span><span>video → spritesheet → pet</span></div>
       </section>
 
-      <section class="card dark">
-        <div class="kicker">最重要的特征</div>
-        <h2>不是“生成一只猫”，而是保住它的<span class="accent">灵魂</span></h2>
-        <p>这只猫猫头顶和耳边有很多乱乱的呆毛，所以我把“很多呆毛”写成 identity invariant，要求每个动作都保留。</p>
-        <div class="quote">AI 可以美化，但不能把猫猫最可爱的地方磨平。</div>
-        <div class="footer"><span>身份特征</span><span>messy head tufts</span></div>
+      <section id="tuft-card" class="card dark tuft-card">
+        <div class="kicker">这只猫的灵魂：呆毛</div>
+        <h2>不是标准小猫，是<span class="accent">乱毛 Maomao</span></h2>
+        <p class="tuft-note">头顶和耳边这些炸开的毛，必须每一帧都保住。</p>
+        <div class="identity-tags">
+          <span class="identity-tag">写进 prompt 约束</span>
+          <span class="identity-tag">9 个动作都要保留</span>
+          <span class="identity-tag">不能被 AI 磨平</span>
+        </div>
+        <span class="callout one">头顶呆毛</span>
+        <span class="callout two">耳边炸毛</span>
+        <img class="hero-pet" src="assets/maomao-frame.png" alt="Maomao with visible tufts" />
+        <div class="footer"><span>identity invariant</span><span>messy head tufts</span></div>
       </section>
 
       <section class="card">
@@ -329,5 +471,13 @@
         <div class="footer"><span>video-hatch-pet</span><span>from video to pet</span></div>
       </section>
     </main>
+    <script>
+      window.addEventListener("load", () => {
+        const target = window.location.hash && document.querySelector(window.location.hash);
+        if (target) {
+          window.requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
+        }
+      });
+    </script>
   </body>
 </html>
